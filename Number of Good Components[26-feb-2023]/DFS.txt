@@ -1,0 +1,39 @@
+
+class Solution {
+    public void dfs(int i,ArrayList<ArrayList<Integer>> adj,boolean[] visited,int[] data)
+    {
+        visited[i]=true;
+        
+        for(Integer in:adj.get(i))
+        {
+            if(visited[in]==false)
+            {
+                data[0]++;
+                data[1]+=adj.get(in).size();
+                dfs(in,adj,visited,data);
+            }
+        }
+    }
+    public int findNumberOfGoodComponent(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        boolean[] visited=new boolean[V+1];
+        
+        int ans=0;
+        
+        for(int i=1;i<=V;i++)
+        {
+            if(visited[i]==true) continue;
+            
+            int[] cntData={1,adj.get(i).size()};
+            
+            dfs(i,adj,visited,cntData);
+            
+            int nodes=cntData[0],deg=cntData[1];
+            
+            if(deg/2==nodes*(nodes-1)/2) ans++;
+        }
+        
+            return ans;
+        
+    }
+}

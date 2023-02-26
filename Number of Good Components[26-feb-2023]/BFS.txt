@@ -1,0 +1,39 @@
+
+class Solution {
+    public int findNumberOfGoodComponent(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        boolean[] visited=new boolean[V+1];
+        
+        int ans=0;
+        
+        for(int i=1;i<=V;i++)
+        {
+            if(visited[i]==true) continue;
+            
+            Queue<Integer> q=new LinkedList<>();
+            q.add(i);
+            visited[i]=true;
+            int nodes=1,deg=adj.get(i).size();
+            
+            while(!q.isEmpty())
+            {
+                int cur=q.poll();
+                for(Integer in:adj.get(cur))
+                {
+                    if(visited[in]==false)
+                    {
+                        visited[in]=true;
+                        q.add(in);
+                        nodes++;
+                        deg+=(adj.get(in).size());
+                    }
+                }
+            }
+            
+            if(deg/2==nodes*(nodes-1)/2) ans++;
+        }
+        
+            return ans;
+        
+    }
+}f

@@ -1,0 +1,22 @@
+
+
+//User function Template for Java
+
+class Solution{
+	int [] updateQuery(int N, int Q, int [][]U){
+        
+        int[] arr=new int[N];
+        
+        for(int[] query:U)
+        {
+            int l=query[0],r=query[1],x=query[2];
+            
+            for(int i=l-1;i<=r-1;i++)
+            {
+                arr[i]=arr[i] | x;
+            }
+        }
+        
+            return arr;
+    }
+}

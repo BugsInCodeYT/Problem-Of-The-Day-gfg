@@ -24,13 +24,13 @@ class Solution {
             {
                 if(grid.get(i).get(j)=='X') continue;
                 
-                int min=Integer.MAX_VALUE;
+                int min=dp[i][j];
                 if(i+1<N) min=Math.min(min,dp[i+1][j]);
                 if(i-1>=0) min=Math.min(min,dp[i-1][j]);
                 if(j-1>=0) min=Math.min(min,dp[i][j-1]);
                 if(j+1<M) min=Math.min(min,dp[i][j+1]);
                 
-                if(min!=Integer.MAX_VALUE) dp[i][j]=min+1;
+                if(min!=dp[i][j]) dp[i][j]=min+1;
             }
         }
         
@@ -40,25 +40,18 @@ class Solution {
             {
                 if(grid.get(i).get(j)=='X') continue;
                 
-                int min=Integer.MAX_VALUE;
+                int min=dp[i][j];
                 if(i+1<N) min=Math.min(min,dp[i+1][j]);
                 if(i-1>=0) min=Math.min(min,dp[i-1][j]);
                 if(j-1>=0) min=Math.min(min,dp[i][j-1]);
                 if(j+1<M) min=Math.min(min,dp[i][j+1]);
                 
-                if(min!=Integer.MAX_VALUE) dp[i][j]=min+1;
-            }
-        }
-        
-        for(int i=0;i<N;i++){
-            for(int j=0;j<M;j++){
-               // System.out.print(dp[i][j]+" ");
+                if(min!=dp[i][j]) dp[i][j]=min+1;
+                
                 if(grid.get(i).get(j)=='Y')
                   ans=Math.min(ans,dp[i][j]);
             }
-           // System.out.println();
-        }
-                
+        }         
                 
             return ans;
     }

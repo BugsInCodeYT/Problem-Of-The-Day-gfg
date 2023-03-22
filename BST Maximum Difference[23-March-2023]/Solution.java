@@ -9,26 +9,24 @@ class Solution
           targetNode[0]=root;  
           return target;
         }
-        int left=find(root.left,target,targetNode);
-        int right=find(root.right,target,targetNode);
         
-        if(left==Integer.MIN_VALUE) 
-        {
-            if(right==Integer.MIN_VALUE) return Integer.MIN_VALUE;
-            else return root.data+right;
-        }
-        else
-        {
-            return root.data+left;  
-        }
+        
+        if(target>root.data) 
+                    return root.data+find(root.right,target,targetNode);
+        else                 
+                    return root.data+find(root.left,target,targetNode);
+        
+       
     }
     public static int solve(Node root)
     {
         if(root==null) return Integer.MAX_VALUE/2;
         if(root.left==null && root.right==null) return root.data;
         
+        
         int left=root.data+solve(root.left);
         int right=root.data+solve(root.right);
+        
         
             return Math.min(left,right);
     }

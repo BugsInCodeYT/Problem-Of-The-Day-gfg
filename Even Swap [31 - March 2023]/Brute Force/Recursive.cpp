@@ -1,15 +1,16 @@
 //		>> Recursive.cpp << 
 
 vector<int> lexicographicallyLargest(vector<int>& a, int n) {
-        vector<int> ans(n);
-        for(int i=0;i<n;i++) ans[i]=a[i];
+        bool swap=false;
+        
         for(int i=0;i<n-1;i++) {
             if((a[i]+a[i+1])%2==0 && a[i]<a[i+1]) {
                 int temp=a[i];
                 a[i]=a[i+1];
                 a[i+1]=temp;
+                swap=true;
             }
         }
-        if(a==ans) return ans;
+        if(!swap) return a;
         return lexicographicallyLargest(a,n);
     }

@@ -1,8 +1,6 @@
 int [] lexicographicallyLargest(int [] arr, int n) {
 		
-		int[] ans=new int[n];
-		
-		for(int i=0;i<arr.length;i++) ans[i]=arr[i];
+		boolean swap=false;
 		
 		for(int i=0;i<n-1;i++)
 	    {
@@ -11,10 +9,12 @@ int [] lexicographicallyLargest(int [] arr, int n) {
 	             int temp=arr[i];
 	             arr[i]=arr[i+1];
 	             arr[i+1]=temp;
+			 
+			 swap=true;
 	         }
 	    }
 		
-		if(Arrays.equals(arr,ans)) return ans;
+		if(!swap) return arr;
 		
 		
 		    return lexicographicallyLargest(arr,n);

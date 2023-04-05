@@ -1,0 +1,16 @@
+// >> C++ CODE AND JAVA CODE <<
+		
+for(int i=0;i<N;i++)
+{
+	int leftSum=0;
+		    
+	for(int k=0;k<i;k++) leftSum+=A[k];
+		    
+	int rightSum=0;
+		    
+	for(int k=i+1;k<N;k++) rightSum+=A[k];
+		    
+	if(leftSum==rightSum) return i+1;
+}
+		
+	return -1;

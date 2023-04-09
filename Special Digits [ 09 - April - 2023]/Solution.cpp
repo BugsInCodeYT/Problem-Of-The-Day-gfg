@@ -5,10 +5,10 @@ const int mod = 1e9 + 7;
     bool check(int num, int C, int D) {
         while (num > 0) {
             int val = num % 10;
-            if (val != C && val != D) return false;
+            if (val == C || val == D) return true;
             num /= 10;
         }
-        return true;
+        return false;
     }
     
     long long binPower(long long a, long long n) {
@@ -23,6 +23,13 @@ const int mod = 1e9 + 7;
     }
     
     int bestNumbers(int N, int A, int B, int C, int D) {
+        if(A==B)
+        {
+            if(check(N*A,C,D)) return 1;
+            
+                return 0;
+        }
+        
         vector<long long> fact(N + 1);
         fact[0] = 1;
         for (int i = 1; i <= N; i++) {

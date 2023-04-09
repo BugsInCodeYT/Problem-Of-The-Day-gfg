@@ -7,11 +7,11 @@ static int mod=(int)1e9+7;
         while(num>0)
         {
             int val=num%10;
-            if(val==C || val==D) return false;
+            if(val==C || val==D) return true;
             num/=10;
         }
         
-            return true;
+            return false;
     }
     public static long binPower(long a ,long n){
         long res = 1;

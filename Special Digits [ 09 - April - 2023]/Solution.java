@@ -7,7 +7,7 @@ static int mod=(int)1e9+7;
         while(num>0)
         {
             int val=num%10;
-            if(val!=C && val!=D) return false;
+            if(val==C && val==D) return false;
             num/=10;
         }
         
@@ -26,6 +26,13 @@ static int mod=(int)1e9+7;
         
     }
     public static int bestNumbers(int N, int A, int B, int C, int D) {
+        
+        if(A==B)
+        {
+            if(check(N*A,C,D)) return 1;
+            
+                return 0;
+        }
         
         long[] fact=new long[N + 1];
         

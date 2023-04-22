@@ -5,22 +5,20 @@ class Solution
 {
     public int binarySearch(int val,int[] arr)
     {
-        int low=0,high=arr.length-1;
-        int ans=-1;
-        while(low<=high)
+        int low=0,high=arr.length;
+        while(low<high)
         {
             int mid=(low+high)/2;
             
             if(arr[mid]<val)
             {
-                ans=mid;
                 low=mid+1;
             }
             else
-                high=mid-1;
+                high=mid;
         }
         
-            return ans;
+            return low;
     }
     public long[] smallerSum(int n,int arr[])
     {
@@ -40,8 +38,8 @@ class Solution
         {
             int index=binarySearch(val,arrcpy);
             
-            if(index!=-1)
-                ans[in++]=prefixSum[index];
+            if(index!=0)
+                ans[in++]=prefixSum[index-1];
             else
                 in++;
         }

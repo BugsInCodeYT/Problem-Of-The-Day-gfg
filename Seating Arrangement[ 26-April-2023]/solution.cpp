@@ -19,16 +19,19 @@ bool is_possible_to_get_seats(int n, int m, vector<int>& seats){
                 if (i == 0) {
                     if (seats[i + 1] != 1) {
                         n--;
+                            if(n==0) return true;
                         seats[i] = 1;
                     }
                 } else if (i == m - 1) {
                     if (seats[i - 1] != 1) {
                         n--;
+                            if(n==0) return true;
                         seats[i] = 1;
                     }
                 } else {
                     if (seats[i - 1] != 1 && seats[i + 1] != 1) {
                         n--;
+                            if(n==0) return true;
                         seats[i] = 1;
                     }
                 }
@@ -36,5 +39,5 @@ bool is_possible_to_get_seats(int n, int m, vector<int>& seats){
             i++;
         }
     
-        return n <= 0;
+        return n == 0;
     }

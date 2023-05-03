@@ -10,7 +10,6 @@ def makePalindrome(self,n, arr):
             rev = str[::-1]
         
             if map[str] != map[rev]:
-                if str != rev:
                     return False
         
         return True

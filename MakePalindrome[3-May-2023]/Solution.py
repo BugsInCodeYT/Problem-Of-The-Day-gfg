@@ -18,6 +18,7 @@ class Solution:
             return True
             
         mp = defaultdict(int)
+        palins=defaultdict(int)
         
         for i in range(n):
             str = arr[i]
@@ -26,7 +27,7 @@ class Solution:
             else:
                 mp[str] = 1
         
-        onePalin=""
+        
         for i in range(n):
             if(not palindrome(arr[i])):
                 str = arr[i]
@@ -35,9 +36,13 @@ class Solution:
                 if (mp[str] != mp[rev]):
                         return False
             else:
-                if(onePalin==""):
-                     onePalin=arr[i]
-                if(onePalin!=arr[i]):
-                       return False
+                palins[arr[i]]=palins.get(arr[i],0)+1
                 
-        return True
+        
+        
+        cnt=0
+        for freq in palins.values():
+            if(freq%2==1):
+                cnt+=1
+        
+        return cnt<=1

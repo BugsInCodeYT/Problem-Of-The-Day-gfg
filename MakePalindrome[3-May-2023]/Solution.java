@@ -11,9 +11,7 @@ public static boolean makePalindrome(int n, String[] arr) {
             String rev = new StringBuffer(str).reverse().toString();
     
             if (!map.get(str).equals(map.get(rev))) {
-                if (!str.equals(rev)) {
                     return false;
-                }
             }
         }
     

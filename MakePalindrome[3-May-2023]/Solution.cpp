@@ -11,9 +11,7 @@ bool makePalindrome(int n,vector<string> &arr){
             string rev(str.rbegin(), str.rend());
         
             if (map[str] != map[rev]) {
-                if (str != rev) {
                     return false;
-                }
             }
         }
         

@@ -7,7 +7,7 @@ class Solution {
         if (dp[K][target] != null) return dp[K][target];
         boolean ans = false;
         for (int i = 0; i < N; i++) {
-            if(target>=coins[i])
+            if(target>=coins[i] && K-1>=0)
                 ans |= solve(N, K - 1, target - coins[i], coins, dp);
         }
         dp[K][target] = ans;

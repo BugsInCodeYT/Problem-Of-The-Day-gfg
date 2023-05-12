@@ -3,7 +3,7 @@
 
 int arrayOperations(int n, vector<int> &arr) {
         int cnt=0;
-        bool flag=false;
+        bool flag=false,allNonZero=true;
         
         for(int i=0;i<n;i++)
         {
@@ -14,9 +14,12 @@ int arrayOperations(int n, vector<int> &arr) {
             }
             else
             {
+                allNonZero=false;
                 flag=false;
             }
         }
+        
+        if(allNonZero) return -1;
         
             return cnt;
     }

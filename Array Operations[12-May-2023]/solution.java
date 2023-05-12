@@ -3,9 +3,8 @@
 
 
 public static int arrayOperations(int n, int[] arr) {
-        
         int cnt=0;
-        boolean flag=false;
+        boolean flag=false,allNonZero=true;
         
         for(int i=0;i<n;i++)
         {
@@ -16,9 +15,12 @@ public static int arrayOperations(int n, int[] arr) {
             }
             else
             {
+                allNonZero=false;
                 flag=false;
             }
         }
+        
+        if(allNonZero) return -1;
         
             return cnt;
     }

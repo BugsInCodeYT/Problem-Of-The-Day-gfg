@@ -1,7 +1,6 @@
 #  >> PYTHON MEMO <<
 ''' [This code will not work because there's a recursion limit in python,]
 Even if you increase the limit still the code will show SIGSEGV '''
-
 from typing import List
 import sys
 
@@ -25,4 +24,4 @@ class Solution:
     def findMaxSubsetSum(self, N: int, A: List[int]) -> int:
         dp = [[None]*2 for _ in range(N)]
         
-        return max(self.solve(0, 0, A, dp), self.solve(0, 1, A, dp))
+        return self.solve(0, 1, A, dp)

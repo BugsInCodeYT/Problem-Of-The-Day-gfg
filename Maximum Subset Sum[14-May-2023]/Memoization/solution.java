@@ -1,10 +1,13 @@
 //  >> JAVA MEMO <<
 
+//  >> JAVA MEMO <<
+
 public static long solve(int i,int prevTaken,int[] arr,Long[][] dp)
     {
 
-        if(i>=arr.length) return 0;
+        if(i==arr.length) return dp[i][prevTaken]=0L;
         
+        //memoization
         if(dp[i][prevTaken]!=null)
             return dp[i][prevTaken];
         
@@ -14,14 +17,15 @@ public static long solve(int i,int prevTaken,int[] arr,Long[][] dp)
         }
         else
         {
-            return dp[i][prevTaken]=Math.max(solve(i+1,1,arr,dp)+arr[i],solve(i+1,0,arr,dp));
+            return dp[i][prevTaken] =
+                             Math.max(solve(i+1,1,arr,dp)+arr[i],solve(i+1,0,arr,dp));
         }
 
     }
     public static long findMaxSubsetSum(int N, int[] A) {
         
-        Long[][] dp=new Long[N][2];
+        Long[][] dp=new Long[N+1][2];
         
-        return Math.max(solve(0,0,A,dp),solve(0,1,A,dp));
+        return solve(0,1,A,dp);
         
     }

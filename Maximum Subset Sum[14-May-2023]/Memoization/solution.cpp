@@ -1,31 +1,25 @@
 //  >> C++ MEMO <<
 
-//  >> JAVA MEMO <<
+long long solve(int i, int prevTaken, vector<int>& arr, vector<vector<long long>>& dp) {
 
-public static long solve(int i,int prevTaken,int[] arr,Long[][] dp)
-    {
-
-        if(i==arr.length) return dp[i][prevTaken]=0;
-        
-        //memoization
-        if(dp[i][prevTaken]!=null)
-            return dp[i][prevTaken];
-        
-        if(prevTaken==0)
-        {
-            return dp[i][prevTaken]=solve(i+1,1,arr,dp)+arr[i];
-        }
-        else
-        {
-            return dp[i][prevTaken] =
-                             Math.max(solve(i+1,1,arr,dp)+arr[i],solve(i+1,0,arr,dp));
-        }
-
+    if (i == arr.size()) return dp[i][prevTaken]=0;
+    
+    if (dp[i][prevTaken] != -1) return dp[i][prevTaken];
+    
+    if (prevTaken == 0) {
+        return dp[i][prevTaken] = solve(i+1, 1, arr, dp) + arr[i];
+    } else {
+        return dp[i][prevTaken] = 
+                        max(solve(i+1, 1, arr, dp) + arr[i], solve(i+1, 0, arr, dp));
     }
-    public static long findMaxSubsetSum(int N, int[] A) {
-        
-        Long[][] dp=new Long[N+1][2];
-        
-        return solve(0,1,A,dp);
-        
-    }
+
+}
+
+
+long long findMaxSubsetSum(int N, vector<int>& A) {
+
+    vector<vector<long long>> dp(N+1, vector<long long>(2, -1));
+    
+    	return solve(0, 1, A, dp);
+
+}

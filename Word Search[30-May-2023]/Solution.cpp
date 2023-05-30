@@ -39,7 +39,7 @@ private:
                       dfs(i - 1, j, board, word, ind + 1, visited) ||
                       dfs(i, j + 1, board, word, ind + 1, visited) ||
                       dfs(i, j - 1, board, word, ind + 1, visited);
-        visited[i][j] = false;
+
         return result;
     }
 };

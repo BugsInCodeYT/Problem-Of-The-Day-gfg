@@ -20,7 +20,6 @@ class Solution:
 		            dfs(i,j+1,board,word,ind+1,visited) or 
 		            dfs(i,j-1,board,word,ind+1,visited))
 
-            visited[i][j]=False
 
             return result
 

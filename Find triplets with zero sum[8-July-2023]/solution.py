@@ -9,11 +9,12 @@ class Solution:
             j=i+1
             k=n-1
             
+            target=-arr[i]
             while(j<k):
-                sum=arr[i]+arr[j]+arr[k]
-                if(sum==0):
+                sum=arr[j]+arr[k]
+                if(sum==target):
                     return 1
-                elif sum>0:
+                elif sum>target:
                     k-=1
                 else:
                     j+=1

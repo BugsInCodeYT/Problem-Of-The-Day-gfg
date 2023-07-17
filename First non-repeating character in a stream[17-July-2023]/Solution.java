@@ -9,14 +9,14 @@ class Solution
         int[] first = new int[26];
         Arrays.fill(first, -1);
 
+       
+        StringBuilder ans = new StringBuilder();
         for (int i = 0; i < n; i++) {
+            
             if (first[A.charAt(i) - 'a'] == -1) {
                 first[A.charAt(i) - 'a'] = i;
             }
-        }
-
-        StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < n; i++) {
+            
             f[A.charAt(i) - 'a'] += 1;
             char ch = '#';
             int x = n + 1;

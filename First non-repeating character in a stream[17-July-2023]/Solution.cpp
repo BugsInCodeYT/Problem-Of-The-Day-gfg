@@ -7,14 +7,13 @@ class Solution {
             vector<int> f(26, 0);
             vector<int> first(26, -1);
     
-            for (int i = 0; i < n; i++) {
-                if (first[A[i] - 'a'] == -1) {
-                    first[A[i] - 'a'] = i;
-                }
-            }
-    
             string ans = "";
             for (int i = 0; i < n; i++) {
+
+            	if (first[A[i] - 'a'] == -1) {
+                    first[A[i] - 'a'] = i;
+                }
+
                 f[A[i] - 'a'] += 1;
                 char ch = '#';
                 int x = n + 1;

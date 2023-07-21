@@ -1,0 +1,27 @@
+>> Non Optimized Recursive Code <<
+
+public static Node reverse(Node head, int k) {
+        
+        if(head==null) return null;
+    
+        Node start=head;
+        Node end=head;
+        
+        int cnt = k;
+        while (end != null && cnt != 1) {
+            end = end.next;
+            cnt--;
+        }
+        
+        Node newHead=null;
+        if(end!=null){ 
+            newHead=end.next;
+            end.next=null;
+        }
+        
+        
+        Node ans=reverseList(start);
+        head.next=reverse(newHead,k);
+        
+        return ans;
+}

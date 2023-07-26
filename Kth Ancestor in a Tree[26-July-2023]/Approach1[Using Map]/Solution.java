@@ -3,35 +3,24 @@
 class Solution
 {
     public int kthAncestor(Node root, int k, int node) {
-    Map<Node, Node> parentMap = new HashMap<>();
-    getParents(root, null, parentMap);
-    Node nn = find(root, node);
-    while (nn != null && k > 0) {
+    Map<Integer, Integer> parentMap = new HashMap<>();
+    getParents(root, -1, parentMap);
+    
+    int nn=node;
+    while (parentMap.containsKey(nn) && k > 0) {
         nn = parentMap.get(nn);
         k--;
     }
-    return nn == null ? -1 : nn.data;
+    return ! parentMap.containsKey(nn) ? -1 : nn;
 }
 
-    private void getParents(Node root, Node par, Map<Node, Node> parentMap) {
+    private void getParents(Node root, int par, Map<Integer, Integer> parentMap) {
         if (root == null) {
             return;
         }
-        parentMap.put(root, par);
-        getParents(root.left, root, parentMap);
-        getParents(root.right, root, parentMap);
+        parentMap.put(root.data, par);
+        getParents(root.left, root.data, parentMap);
+        getParents(root.right, root.data, parentMap);
     }
     
-    private Node find(Node root, int node) {
-        if (root == null) {
-            return null;
-        }
-        if (root.data == node) {
-            return root;
-        }
-        Node leftSearch = find(root.left, node);
-        Node rightSearch = find(root.right, node);
-        return rightSearch == null ? leftSearch : rightSearch;
-    }
-
 }

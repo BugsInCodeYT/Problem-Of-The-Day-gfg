@@ -1,40 +1,25 @@
 //  >> C++ CODE <<
 
 
-void getParents(Node* root, Node* par, unordered_map<Node*, Node*>& parentMap) {
+void getParents(Node* root, int par, unordered_map<int, int>& parentMap) {
     if (root == nullptr) {
         return;
     }
-    parentMap[root] = par;
-    getParents(root->left, root, parentMap);
-    getParents(root->right, root, parentMap);
+    parentMap[root->data] = par;
+    getParents(root->left, root->data, parentMap);
+    getParents(root->right, root->data, parentMap);
 }
-
-Node* find(Node* root, int node) {
-    if (root == nullptr) {
-        return nullptr;
-    }
-    
-    if (root->data == node) {
-        return root;
-    }
-    
-    Node* leftSearch = find(root->left, node);
-    Node* rightSearch = find(root->right, node);
-    return rightSearch == nullptr ? leftSearch : rightSearch;
-}
-
 
 int kthAncestor(Node* root, int k, int node) {
-    unordered_map<Node*, Node*> parentMap;
-    getParents(root, nullptr, parentMap);
+    unordered_map<int, int> parentMap;
+    getParents(root, -1, parentMap);
     
-    Node* nn = find(root, node);
+    int nn = node;
     
-    while (nn != nullptr && k > 0) {
+    while (parentMap.find(nn)!=parentMap.end() && k > 0) {
         nn = parentMap[nn];
         k--;
     }
     
-    return nn == nullptr ? -1 : nn->data;
+    return parentMap.find(nn)==parentMap.end() ? -1 : nn;
 }

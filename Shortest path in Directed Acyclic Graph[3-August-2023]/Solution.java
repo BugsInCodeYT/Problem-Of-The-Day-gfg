@@ -1,6 +1,8 @@
 //  >> JAVA CODE <<
 
-public int[] shortestPath(int N,int M, int[][] edges) {
+class Solution {
+
+	public int[] shortestPath(int N,int M, int[][] edges) {
 	    
 	    ArrayList<ArrayList<ArrayList<Integer>>> adj=new ArrayList<>();
 	    
@@ -20,17 +22,17 @@ public int[] shortestPath(int N,int M, int[][] edges) {
 	    }
 	    
 	    
-		PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)->Integer.compare(a[1],b[1]));
+		Queue<int[]> q=new LinkedList<>();
 		int[] dist=new int[N];
 		
 		Arrays.fill(dist,Integer.MAX_VALUE);
 		dist[0]=0;
 		
-		pq.add(new int[]{0,0});
+	   q.add(new int[]{0,0});
 		
-		while(!pq.isEmpty())
+		while(!q.isEmpty())
 		{
-		    int[] values=pq.poll();
+		    int[] values=q.poll();
 		    int node=values[0];
 		    int distance=values[1];
 		    
@@ -41,7 +43,7 @@ public int[] shortestPath(int N,int M, int[][] edges) {
 		        if(distance+ndistance<dist[neighbor])
 		        {
 		            dist[neighbor]=distance+ndistance;
-		            pq.add(new int[]{neighbor,dist[neighbor]});
+		           q.add(new int[]{neighbor,dist[neighbor]});
 		        }
 		    }
 		}
@@ -52,3 +54,4 @@ public int[] shortestPath(int N,int M, int[][] edges) {
 		
 		return dist;
 	}
+}

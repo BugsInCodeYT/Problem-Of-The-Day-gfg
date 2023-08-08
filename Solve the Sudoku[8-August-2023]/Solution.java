@@ -37,7 +37,7 @@ class Solution
                     {
                         if(isValid(k,grid,i,j))
                         {
-                            grid[i][j]=i;
+                            grid[i][j]=k;
                             boolean ans=SolveSudoku(grid);
                    
                             if(ans) return true;
